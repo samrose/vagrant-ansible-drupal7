@@ -5,3 +5,15 @@
   apt_key: keyserver=keyserver.ubuntu.com id=0xcbcb082a1bb943db
 - name: Install MariaDB Server
   apt: name=mariadb-server state=latest update_cache=yes
+- name: python pip
+  apt: name=python-pip state=latest update_cache=yes cache_valid_time=3600
+- name: install libmariadbclient-dev
+  apt: name=libmariadbclient-dev state=latest update_cache=yes cache_valid_time=3600
+- name: install python-dev
+  apt: name=python-dev state=latest update_cache=yes cache_valid_time=3600
+- name: Install python-mysqldb
+  apt: name=python-mysqldb update_cache=yes cache_valid_time=3600
+- name: set the sql root password
+  mysql_user: user=root
+              password={{ mysql_root_password }}
+              host=localhost

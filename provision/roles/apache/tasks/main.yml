@@ -3,6 +3,10 @@
   apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=3600
   with_items:
     - apache2 
+
+- name: replace 000-default.conf
+  template: src=000-default.conf.j2  dest=/etc/apache2/sites-available/000-default.conf
+
 - name: enabled mod_rewrite
   apache2_module: name=rewrite state=present
   notify:
