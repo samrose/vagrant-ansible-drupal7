@@ -1,0 +1,10 @@
+- hosts: all
+  gather_facts: true
+  sudo: yes
+  roles:
+    - linux
+    - apache
+    - mariadb
+    - php
+    - composer
+    - drush

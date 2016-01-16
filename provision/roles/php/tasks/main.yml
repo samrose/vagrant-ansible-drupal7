@@ -1,0 +1,12 @@
+- name: Install Packages
+  sudo: yes
+  apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=3600
+  with_items:
+    - php5 
+    - libapache2-mod-php5 
+    - php5-mcrypt
+    - php5-gd 
+    - php5-curl 
+    - libssh2-php 
+    - php5-mysql
+

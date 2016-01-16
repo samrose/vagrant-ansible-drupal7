@@ -1,0 +1,25 @@
+- name: Install Packages
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+    - ntp
+    - ufw
+    - fail2ban
+    - vim
+    - git
+
+- name: Disallow root SSH access
+  lineinfile: dest=/etc/ssh/sshd_config
+              regexp="^PermitRootLogin"
+              line="PermitRootLogin no"
+              state=present
+  notify: Restart ssh
+
+
+- name: Setup ufw
+  ufw: state=enabled policy=deny
+
+- name: Allow ssh traffic
+  ufw: rule=allow port=22 proto=tcp
+
+- name: Allow port 80 traffic for apache
+  ufw: rule=allow port=80 proto=tcp
