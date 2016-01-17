@@ -6,6 +6,7 @@
     - fail2ban
     - vim
     - git
+    - unzip
 
 - name: Disallow root SSH access
   lineinfile: dest=/etc/ssh/sshd_config
