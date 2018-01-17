@@ -1,12 +1,19 @@
+- name: add repository for php5.6
+  apt_repository: repo='ppa:ondrej/php' update_cache=yes
+
+
 - name: Install Packages
-  sudo: yes
+  become: true
   apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=3600
   with_items:
-    - php5 
-    - libapache2-mod-php5 
-    - php5-mcrypt
-    - php5-gd 
-    - php5-curl 
+    - php5.6
+    - libapache2-mod-php5.6
+    - php5.6-mcrypt
+    - php5.6-gd
+    - php5.6-curl
+    - php5.6-xml
+    - php5.6-dom
+    - php5.6-mbstring
     - libssh2-php 
-    - php5-mysql
+    - php5.6-mysql
 

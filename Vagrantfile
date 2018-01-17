@@ -70,8 +70,8 @@ Vagrant.configure(2) do |config|
   # SHELL
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "vvvv"
-    ansible.sudo = true
+    ansible.become = true
     ansible.playbook = "provision/vagrant.yml"
-    ansible.ask_sudo_pass = false
+    #ansible.ask_sudo_pass = false
   end 
 end
